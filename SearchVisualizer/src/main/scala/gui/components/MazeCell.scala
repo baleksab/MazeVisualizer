@@ -1,6 +1,6 @@
-package gui
+package gui.components
 
-import gui.CellState.{BORDER, CellState, PATH, WALL}
+import gui.components.CellState.{BORDER, CellState, PATH, WALL}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 

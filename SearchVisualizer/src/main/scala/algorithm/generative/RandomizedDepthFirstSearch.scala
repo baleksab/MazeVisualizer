@@ -1,14 +1,11 @@
 package algorithm.generative
 
-import gui.{CellState, MazeCell}
+import gui.components.{CellState, MazeCell}
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
 import scala.collection.mutable.Stack
 import scala.util.Random
-
-import scala.concurrent.Future
-import scala.concurrent.ExecutionContext.Implicits.global
 
 class RandomizedDepthFirstSearch extends Generative {
 
@@ -22,9 +19,7 @@ class RandomizedDepthFirstSearch extends Generative {
     val visitedCells = ListBuffer[MazeCell]()
     val stack = mutable.Stack[MazeCell]()
 
-    Future {
-      dfs(startCell, mazeCells, rows, cols, visitedCells, stack)
-    }
+    dfs(startCell, mazeCells, rows, cols, visitedCells, stack)
   }
 
   private def dfs(cell: MazeCell, mazeCells: Array[Array[MazeCell]], rows: Int, cols: Int, visitedCells: ListBuffer[MazeCell], stack: mutable.Stack[MazeCell]): Unit = {

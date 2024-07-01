@@ -1,4 +1,4 @@
-package gui
+package gui.components
 
 object CellState extends Enumeration {
 

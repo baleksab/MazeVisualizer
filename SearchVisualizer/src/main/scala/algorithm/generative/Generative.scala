@@ -1,6 +1,6 @@
 package algorithm.generative
 
-import gui.MazeCell
+import gui.components.MazeCell
 
 trait Generative {
 
