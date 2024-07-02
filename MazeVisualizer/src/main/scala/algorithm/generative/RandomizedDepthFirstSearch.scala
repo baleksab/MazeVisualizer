@@ -59,6 +59,6 @@ class RandomizedDepthFirstSearch extends Generative {
     }
   }
 
-  override def toString: String = "Randomized depth-first search (Iterative)"
+  override def toString: String = "Randomized depth-first search"
 
 }

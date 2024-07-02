@@ -78,6 +78,7 @@ object MainFrame extends JFXApp3 {
     solveButton.onAction = _ => {
       if (solverDropdown.value.value != null) {
         resetButton.setDisable(true)
+        solveButton.setDisable(true)
 
         val solverAlgorithm = solverDropdown.value.value
         val future = Future {

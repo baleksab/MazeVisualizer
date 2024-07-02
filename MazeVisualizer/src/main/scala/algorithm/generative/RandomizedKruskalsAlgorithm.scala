@@ -75,6 +75,6 @@ class RandomizedKruskalsAlgorithm extends Generative {
     }
   }
 
-  override def toString: String = "Randomized Kruskal's algorithm (Iterative)"
+  override def toString: String = "Randomized Kruskal's algorithm"
 
 }

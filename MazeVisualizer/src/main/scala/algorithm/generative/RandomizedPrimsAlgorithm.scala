@@ -91,6 +91,6 @@ class RandomizedPrimsAlgorithm extends Generative {
   }
 
 
-  override def toString = "Randomized Prim's algorithm (Iterative)"
+  override def toString = "Randomized Prim's algorithm"
 
 }
