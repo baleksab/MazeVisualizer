@@ -32,6 +32,7 @@ class MazeGrid extends GridPane {
     for (i <- 0 until rows; j <- 0 until cols) {
       val cell = cells(i)(j)
       cell.setState(CellState.WALL)
+      cell.predecessor = None
     }
   }
 

@@ -5,6 +5,7 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
 class MazeCell(var state: CellState, val posX: Int, posY: Int, val cellWidth: Double, val cellHeight: Double) extends Rectangle {
+  var predecessor: Option[MazeCell] = None
 
   width = cellWidth
   height = cellHeight
@@ -17,12 +18,12 @@ class MazeCell(var state: CellState, val posX: Int, posY: Int, val cellWidth: Do
   }
 
   private def getColor: Color = {
-    if (state == WALL)
-      Color.Black
-    else if (state == PATH)
-      Color.White
-    else
-      Color.Yellow
+    state match {
+      case CellState.WALL => Color.Black
+      case CellState.PATH => Color.White
+      case CellState.VISITED => Color.Blue
+      case CellState.PART_OF_SOLUTION => Color.Red
+    }
   }
 
   def getPosition: (Int, Int) = {

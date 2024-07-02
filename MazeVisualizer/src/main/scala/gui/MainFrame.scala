@@ -44,8 +44,10 @@ object MainFrame extends JFXApp3 {
     }
 
     val solveButton = new Button("Solve Maze")
+    solveButton.setDisable(true)
     val generateButton = new Button("Generate Maze")
     val resetButton = new Button("Reset Maze")
+    resetButton.setDisable(true)
 
 
     generateButton.onAction = _ => {
@@ -58,6 +60,7 @@ object MainFrame extends JFXApp3 {
         }
         future.onComplete { _ =>
           resetButton.setDisable(false)
+          solveButton.setDisable(false)
           mazeGrid.getCells(0)(1).setState(CellState.PATH)
           mazeGrid.getCells(mazeGrid.getCells.length - 1)(mazeGrid.getCells(0).length - 2).setState(CellState.PATH)
         }
@@ -72,9 +75,18 @@ object MainFrame extends JFXApp3 {
       }
     }
 
-    solverDropdown.onAction = _ => {
+    solveButton.onAction = _ => {
       if (solverDropdown.value.value != null) {
-       //
+        resetButton.setDisable(true)
+
+        val solverAlgorithm = solverDropdown.value.value
+        val future = Future {
+          solverAlgorithm.solve(mazeGrid.getCells)
+        }
+
+        future.onComplete { _ =>
+          resetButton.setDisable(false)
+        }
       } else {
         val alert = new Alert(AlertType.Warning) {
           initOwner(generateButton.scene().getWindow)
@@ -89,6 +101,8 @@ object MainFrame extends JFXApp3 {
     resetButton.onAction = _ => {
       mazeGrid.resetCells()
       generateButton.setDisable(false)
+      resetButton.setDisable(true)
+      solveButton.setDisable(true)
     }
 
     controlsContainer.getChildren.addAll(resetButton, algorithmDropdown, generateButton, solverDropdown, solveButton)
