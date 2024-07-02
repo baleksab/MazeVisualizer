@@ -5,7 +5,9 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
 class MazeCell(var state: CellState, val posX: Int, posY: Int, val cellWidth: Double, val cellHeight: Double) extends Rectangle {
+
   var predecessor: Option[MazeCell] = None
+  var distance: Int = Int.MaxValue
 
   width = cellWidth
   height = cellHeight
@@ -28,6 +30,12 @@ class MazeCell(var state: CellState, val posX: Int, posY: Int, val cellWidth: Do
 
   def getPosition: (Int, Int) = {
     (posX, posY)
+  }
+
+  def reset(): Unit = {
+    setState(CellState.WALL)
+    predecessor = None
+    distance = Int.MaxValue
   }
 
 }

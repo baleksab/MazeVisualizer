@@ -1,7 +1,7 @@
 package gui
 
 import algorithm.generative.{Generative, RandomizedDepthFirstSearch, RandomizedKruskalsAlgorithm, RandomizedPrimsAlgorithm, WilsonsAlgorithm}
-import algorithm.solver.{AStarSearch, BreadthFirstSearch, DepthFirstSearch, Solver}
+import algorithm.solver.{DijkstrasAlgorithm, BreadthFirstSearch, DepthFirstSearch, Solver}
 import gui.components.{CellState, MazeGrid}
 import scalafx.application.JFXApp3
 import scalafx.application.JFXApp3.PrimaryStage
@@ -27,7 +27,7 @@ object MainFrame extends JFXApp3 {
   private val solverAlgorithms: ObservableBuffer[Solver] = ObservableBuffer(
     new BreadthFirstSearch,
     new DepthFirstSearch,
-    new AStarSearch
+    new DijkstrasAlgorithm
   )
 
   override def start(): Unit = {

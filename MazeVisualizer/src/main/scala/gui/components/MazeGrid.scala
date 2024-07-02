@@ -20,7 +20,7 @@ class MazeGrid extends GridPane {
     children.clear()
 
     for (i <- 0 until rows; j <- 0 until cols) {
-      val cell = new MazeCell(CellState.WALL, i, j, cellWidth, cellHeight)  // Start with all cells as walls
+      val cell = new MazeCell(CellState.WALL, i, j, cellWidth, cellHeight)
 
       cells(i)(j) = cell
 
@@ -31,8 +31,7 @@ class MazeGrid extends GridPane {
   def resetCells(): Unit = {
     for (i <- 0 until rows; j <- 0 until cols) {
       val cell = cells(i)(j)
-      cell.setState(CellState.WALL)
-      cell.predecessor = None
+      cell.reset()
     }
   }
 
