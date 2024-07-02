@@ -46,7 +46,6 @@ class RandomizedDepthFirstSearch extends Generative {
           val wall: MazeCell = mazeCells(wallX)(wallY)
 
           if (neighbor != null && wall != null && !visitedCells.contains(neighbor)) {
-            stack.push(cell)
             wall.setState(CellState.PATH)
             neighbor.setState(CellState.PATH)
             visitedCells.addOne(neighbor)
